@@ -10,7 +10,7 @@
 
 
 (defn send-to-rebl! [{:keys [code] :as req} {:keys [value] :as resp}]
-  (when (and code value)
+  (when (and code (contains? resp :value))
         (rebl/submit (read-string code) value))
   resp)
 
